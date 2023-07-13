@@ -66,8 +66,10 @@ namespace MissionPlanner.ArduPilot
                 {
                     // land can be 0,0 or a lat,lng
                     if (command == (ushort)MAVLink.MAV_CMD.LAND && item.lat == 0 && item.lng == 0)
+                    {
+                        a++;
                         continue;
-
+                    }
                     if (command == (ushort)MAVLink.MAV_CMD.DO_SET_ROI)
                     {
                         pointlist.Add(new PointLatLngAlt(item.lat, item.lng,

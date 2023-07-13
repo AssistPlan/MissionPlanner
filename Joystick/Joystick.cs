@@ -596,6 +596,8 @@ namespace MissionPlanner.Joystick
                     if (getJoystickAxis(3) != Joystick.joystickaxis.None)
                         Interface.MAV.cs.rcoverridech3 = pickchannel(3, JoyChannels[3].axis, JoyChannels[3].reverse,
                             JoyChannels[3].expo); //(ushort)(1000 - ((int)slider[0] / 65.535) + 1000);
+                    Interface.MAV.cs.rcoverridech3 = (short)((Interface.MAV.cs.rcoverridech3 - 1500) * 1.2 + 1500);
+                    
                     if (getJoystickAxis(4) != Joystick.joystickaxis.None)
                         Interface.MAV.cs.rcoverridech4 = pickchannel(4, JoyChannels[4].axis, JoyChannels[4].reverse,
                             JoyChannels[4].expo); //(ushort)(((int)state.X / 65.535) + 1000);

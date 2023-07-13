@@ -566,11 +566,11 @@ ICAROUS_KINEMATIC_BANDS = 42001,
         RETURN_TO_LAUNCH=20, 
     	///<summary> Land at location |Abort Alt| Precision land mode. (0 = normal landing, 1 = opportunistic precision landing, 2 = required precsion landing)| Empty| Desired yaw angle. NaN for unchanged.| Latitude| Longitude| Altitude (ground level)|  </summary>
         [Description("Land at location")]
-        LAND=21, 
-    	///<summary> Takeoff from ground / hand |Minimum pitch (if airspeed sensor present), desired pitch without sensor| Empty| Empty| Yaw angle (if magnetometer present), ignored without magnetometer. NaN for unchanged.| Latitude| Longitude| Altitude|  </summary>
+        LAND=21,
+        ///<summary> Takeoff from ground / hand |Minimum pitch (if airspeed sensor present), desired pitch without sensor| Empty| Empty| Yaw angle (if magnetometer present), ignored without magnetometer. NaN for unchanged.| Latitude| Longitude| Altitude|  </summary>
         [Description("Takeoff from ground / hand")]
-        TAKEOFF=22, 
-    	///<summary> Land at local position (local frame only) |Landing target number (if available)| Maximum accepted offset from desired landing position [m] - computed magnitude from spherical coordinates: d = sqrt(x^2 + y^2 + z^2), which gives the maximum accepted distance between the desired landing position and the position where the vehicle is about to land| Landing descend rate [ms^-1]| Desired yaw angle [rad]| Y-axis position [m]| X-axis position [m]| Z-axis / ground level position [m]|  </summary>
+        TAKEOFF = 22,
+        ///<summary> Land at local position (local frame only) |Landing target number (if available)| Maximum accepted offset from desired landing position [m] - computed magnitude from spherical coordinates: d = sqrt(x^2 + y^2 + z^2), which gives the maximum accepted distance between the desired landing position and the position where the vehicle is about to land| Landing descend rate [ms^-1]| Desired yaw angle [rad]| Y-axis position [m]| X-axis position [m]| Z-axis / ground level position [m]|  </summary>
         [Description("Land at local position (local frame only)")]
         LAND_LOCAL=23, 
     	///<summary> Takeoff from local position (local frame only) |Minimum pitch (if airspeed sensor present), desired pitch without sensor [rad]| Empty| Takeoff ascend rate [ms^-1]| Yaw angle [rad] (if magnetometer or another yaw estimation source present), ignored without one of these| Y-axis position [m]| X-axis position [m]| Z-axis position [m]|  </summary>
@@ -986,8 +986,12 @@ ICAROUS_KINEMATIC_BANDS = 42001,
         DO_WINCH=42600, 
     	///<summary> Update the bootloader |Empty| Empty| Empty| Empty| Magic number - set to 290876 to actually flash| Empty| Empty|  </summary>
         [Description("Update the bootloader")]
-        FLASH_BOOTLOADER=42650, 
-    
+        FLASH_BOOTLOADER=42650,
+        [Description("mode rover")]
+        MODE_ROVER= 42651,
+        [Description("mode copter")]
+        MODE_COPTER = 42652,
+
     };
     
     ///<summary>  </summary>
