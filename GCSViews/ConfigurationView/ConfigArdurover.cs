@@ -30,54 +30,80 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                 Enabled = false;
                 return;
             }
-            if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduRover)
-            {
-                Enabled = true;
-            }
-            else
-            {
-                Enabled = false;
-                return;
-            }
+            //if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduRover)
+            //{
+            //    Enabled = true;
+            //}
+            //else
+            //{
+            //    Enabled = false;
+            //    return;
+            //}
+            Enabled = true;
 
             startup = true;
 
             CH7_OPTION.setup(
-                ParameterMetaDataRepository.GetParameterOptionsInt("CH7_OPTION", MainV2.comPort.MAV.cs.firmware.ToString())
-                    .ToList(), "CH7_OPTION", MainV2.comPort.MAV.param);
+                //ParameterMetaDataRepository.GetParameterOptionsInt("CH7_OPTION", MainV2.comPort.MAV.cs.firmware.ToString())
+                //    .ToList(), "CH7_OPTION", MainV2.comPort.MAV.param);
+                ParameterMetaDataRepository.GetParameterOptionsInt("CH7_OPT", MainV2.comPort.MAV.cs.firmware.ToString())
+                    .ToList(), "CH7_OPT", MainV2.comPort.MAV.param);
             ATC_BRAKE.setup(
-                ParameterMetaDataRepository.GetParameterOptionsInt("ATC_BRAKE", MainV2.comPort.MAV.cs.firmware.ToString())
-                    .ToList(), "ATC_BRAKE", MainV2.comPort.MAV.param);
+                //ParameterMetaDataRepository.GetParameterOptionsInt("ATC_BRAKE", MainV2.comPort.MAV.cs.firmware.ToString())
+                //    .ToList(), "ATC_BRAKE", MainV2.comPort.MAV.param);
+                ParameterMetaDataRepository.GetParameterOptionsInt("ACR_BRAKE", MainV2.comPort.MAV.cs.firmware.ToString())
+                    .ToList(), "ACR_BRAKE", MainV2.comPort.MAV.param);
             MOT_PWM_TYPE.setup(
-                ParameterMetaDataRepository.GetParameterOptionsInt("MOT_PWM_TYPE", MainV2.comPort.MAV.cs.firmware.ToString())
-                    .ToList(), "MOT_PWM_TYPE", MainV2.comPort.MAV.param);
+                //ParameterMetaDataRepository.GetParameterOptionsInt("MOT_PWM_TYPE", MainV2.comPort.MAV.cs.firmware.ToString())
+                //    .ToList(), "MOT_PWM_TYPE", MainV2.comPort.MAV.param);
+                ParameterMetaDataRepository.GetParameterOptionsInt("UGV_PWM_TYPE", MainV2.comPort.MAV.cs.firmware.ToString())
+                    .ToList(), "UGV_PWM_TYPE", MainV2.comPort.MAV.param);
 
-            STEER2SRV_P.setup(0, 0, 1, 0.1f, new[] {"STEER2SRV_P", "ATC_STR_RAT_P"}, MainV2.comPort.MAV.param);
-            STEER2SRV_I.setup(0, 0, 1, 0.1f, new[] {"STEER2SRV_I", "ATC_STR_RAT_I"}, MainV2.comPort.MAV.param);
-            STEER2SRV_D.setup(0, 0, 1, 0.1f, new[] {"STEER2SRV_D", "ATC_STR_RAT_D"}, MainV2.comPort.MAV.param);
-            STEER2SRV_IMAX.setup(0, 0, 1, 0.1f, new[] {"STEER2SRV_IMAX", "ATC_STR_RAT_IMAX"}, MainV2.comPort.MAV.param);
-            ATC_STR_RAT_FF.setup(0, 100, 1, 0.1f, "ATC_STR_RAT_FF", MainV2.comPort.MAV.param);
+            //STEER2SRV_P.setup(0, 0, 1, 0.1f, new[] {"STEER2SRV_P", "ATC_STR_RAT_P"}, MainV2.comPort.MAV.param);
+            //STEER2SRV_I.setup(0, 0, 1, 0.1f, new[] {"STEER2SRV_I", "ATC_STR_RAT_I"}, MainV2.comPort.MAV.param);
+            //STEER2SRV_D.setup(0, 0, 1, 0.1f, new[] {"STEER2SRV_D", "ATC_STR_RAT_D"}, MainV2.comPort.MAV.param);
+            //STEER2SRV_IMAX.setup(0, 0, 1, 0.1f, new[] {"STEER2SRV_IMAX", "ATC_STR_RAT_IMAX"}, MainV2.comPort.MAV.param);
+            //ATC_STR_RAT_FF.setup(0, 100, 1, 0.1f, "ATC_STR_RAT_FF", MainV2.comPort.MAV.param);
+            STEER2SRV_P.setup(0, 0, 1, 0.1f, new[] { "STEER2SRV_P", "ACR_STR_RAT_P" }, MainV2.comPort.MAV.param);
+            STEER2SRV_I.setup(0, 0, 1, 0.1f, new[] { "STEER2SRV_I", "ACR_STR_RAT_I" }, MainV2.comPort.MAV.param);
+            STEER2SRV_D.setup(0, 0, 1, 0.1f, new[] { "STEER2SRV_D", "ACR_STR_RAT_D" }, MainV2.comPort.MAV.param);
+            STEER2SRV_IMAX.setup(0, 0, 1, 0.1f, new[] { "STEER2SRV_IMAX", "ACR_STR_RAT_IMAX" }, MainV2.comPort.MAV.param);
+            ATC_STR_RAT_FF.setup(0, 100, 1, 0.1f, "ACR_STR_RAT_FF", MainV2.comPort.MAV.param);
 
             TURN_RADIUS.setup(0, 0, 1, 0.1f, "TURN_RADIUS", MainV2.comPort.MAV.param);
 
-            SPEED2THR_P.setup(0, 0, 1, 0.1f, new[] {"SPEED2THR_P", "ATC_SPEED_P"}, MainV2.comPort.MAV.param);
-            SPEED2THR_I.setup(0, 0, 1, 0.1f, new[] {"SPEED2THR_I", "ATC_SPEED_I"}, MainV2.comPort.MAV.param);
-            SPEED2THR_D.setup(0, 0, 1, 0.1f, new[] {"SPEED2THR_D", "ATC_SPEED_D"}, MainV2.comPort.MAV.param);
-            SPEED2THR_IMAX.setup(0, 0, 1, 0.1f, new[] {"SPEED2THR_IMAX", "ATC_SPEED_IMAX"}, MainV2.comPort.MAV.param);
-            ATC_ACCEL_MAX.setup(0, 0, 1, 0.1f, "ATC_ACCEL_MAX", MainV2.comPort.MAV.param);
+            //SPEED2THR_P.setup(0, 0, 1, 0.1f, new[] {"SPEED2THR_P", "ATC_SPEED_P"}, MainV2.comPort.MAV.param);
+            //SPEED2THR_I.setup(0, 0, 1, 0.1f, new[] { "SPEED2THR_I", "ATC_SPEED_I" }, MainV2.comPort.MAV.param);
+            //SPEED2THR_D.setup(0, 0, 1, 0.1f, new[] { "SPEED2THR_D", "ATC_SPEED_D" }, MainV2.comPort.MAV.param);
+            //SPEED2THR_IMAX.setup(0, 0, 1, 0.1f, new[] { "SPEED2THR_IMAX", "ATC_SPEED_IMAX" }, MainV2.comPort.MAV.param);
+            //ATC_ACCEL_MAX.setup(0, 0, 1, 0.1f, "ATC_ACCEL_MAX", MainV2.comPort.MAV.param);
+            SPEED2THR_P.setup(0, 0, 1, 0.1f, new[] { "SPEED2THR_P", "ACR_SPEED_P" }, MainV2.comPort.MAV.param);
+            SPEED2THR_I.setup(0, 0, 1, 0.1f, new[] {"SPEED2THR_I", "ACR_SPEED_I"}, MainV2.comPort.MAV.param);
+            SPEED2THR_D.setup(0, 0, 1, 0.1f, new[] {"SPEED2THR_D", "ACR_SPEED_D"}, MainV2.comPort.MAV.param);
+            SPEED2THR_IMAX.setup(0, 0, 1, 0.1f, new[] {"SPEED2THR_IMAX", "ACR_SPEED_IMAX"}, MainV2.comPort.MAV.param);
+            ATC_ACCEL_MAX.setup(0, 0, 1, 0.1f, "ACR_ACCEL_MAX", MainV2.comPort.MAV.param);
             WP_SPEED.setup(0, 100, 1, 0.1f, "WP_SPEED", MainV2.comPort.MAV.param);
 
             CRUISE_SPEED.setup(0, 0, 1, 0.1f, "CRUISE_SPEED", MainV2.comPort.MAV.param);
             CRUISE_THROTTLE.setup(0, 0, 1, 1, "CRUISE_THROTTLE", MainV2.comPort.MAV.param);
-            THR_MIN.setup(0, 0, 1, 1, new[] {"THR_MIN", "MOT_THR_MIN"}, MainV2.comPort.MAV.param);
-            THR_MAX.setup(0, 0, 1, 1, new[] {"THR_MAX", "MOT_THR_MAX"}, MainV2.comPort.MAV.param);
+            //THR_MIN.setup(0, 0, 1, 1, new[] {"THR_MIN", "MOT_THR_MIN"}, MainV2.comPort.MAV.param);
+            //THR_MAX.setup(0, 0, 1, 1, new[] {"THR_MAX", "MOT_THR_MAX"}, MainV2.comPort.MAV.param);
+            THR_MIN.setup(0, 0, 1, 1, new[] {"THR_MIN", "UGV_THR_MIN"}, MainV2.comPort.MAV.param);
+            THR_MAX.setup(0, 0, 1, 1, new[] {"THR_MAX", "UGV_THR_MAX"}, MainV2.comPort.MAV.param);
 
             WP_RADIUS.setup(0, 0, 1, 0.1f, "WP_RADIUS", MainV2.comPort.MAV.param);
             WP_OVERSHOOT.setup(0, 0, 1, 0.1f, "WP_OVERSHOOT", MainV2.comPort.MAV.param);
+            //TURN_G_MAX.setup(0, 0, 1, 0.1f, "TURN_MAX_G", MainV2.comPort.MAV.param);
+            //NAVL1_PERIOD.setup(0, 0, 1, 1, "NAVL1_PERIOD", MainV2.comPort.MAV.param);
+            //NAVL1_DAMPING.setup(0, 0, 1, 0.05f, "NAVL1_DAMPING", MainV2.comPort.MAV.param);
             TURN_G_MAX.setup(0, 0, 1, 0.1f, "TURN_MAX_G", MainV2.comPort.MAV.param);
-            NAVL1_PERIOD.setup(0, 0, 1, 1, "NAVL1_PERIOD", MainV2.comPort.MAV.param);
-            NAVL1_DAMPING.setup(0, 0, 1, 0.05f, "NAVL1_DAMPING", MainV2.comPort.MAV.param);
+            NAVL1_PERIOD.setup(0, 0, 1, 1, "L1_PERIOD", MainV2.comPort.MAV.param);
+            NAVL1_DAMPING.setup(0, 0, 1, 0.05f, "L1_DAMPING", MainV2.comPort.MAV.param);
 
+            //SONAR_TRIGGER_CM.setup(0, 0, 1, 1, new[] {"SONAR_TRIGGER_CM", "RNGFND_TRIGGR_CM"}, MainV2.comPort.MAV.param);
+            //SONAR_TURN_ANGLE.setup(0, 0, 1, 1, new[] {"SONAR_TURN_ANGLE", "RNGFND_TURN_ANGL"}, MainV2.comPort.MAV.param);
+            //SONAR_TURN_TIME.setup(0, 0, 1, 1, new[] {"SONAR_TURN_TIME", "RNGFND_TURN_TIME"}, MainV2.comPort.MAV.param);
+            //SONAR_DEBOUNCE.setup(0, 0, 1, 1, new[] {"SONAR_DEBOUNCE", "RNGFND_DEBOUNCE"}, MainV2.comPort.MAV.param);
             SONAR_TRIGGER_CM.setup(0, 0, 1, 1, new[] {"SONAR_TRIGGER_CM", "RNGFND_TRIGGR_CM"}, MainV2.comPort.MAV.param);
             SONAR_TURN_ANGLE.setup(0, 0, 1, 1, new[] {"SONAR_TURN_ANGLE", "RNGFND_TURN_ANGL"}, MainV2.comPort.MAV.param);
             SONAR_TURN_TIME.setup(0, 0, 1, 1, new[] {"SONAR_TURN_TIME", "RNGFND_TURN_TIME"}, MainV2.comPort.MAV.param);

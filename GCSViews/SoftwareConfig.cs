@@ -71,10 +71,11 @@ namespace MissionPlanner.GCSViews
                         start = AddBackstageViewPage(typeof(ConfigArduplane), Strings.BasicTuning);
                     }
 
-                    if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduRover)
-                    {
-                        start = AddBackstageViewPage(typeof(ConfigArdurover), Strings.BasicTuning);
-                    }
+                    //if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduRover)
+                    //{
+                    //    start = AddBackstageViewPage(typeof(ConfigArdurover), Strings.BasicTuning);
+                    //}
+                    start = AddBackstageViewPage(typeof(ConfigArdurover), "Rover Basic Tuning");
 
                     if (MainV2.comPort.MAV.cs.firmware == Firmwares.ArduTracker)
                     {
